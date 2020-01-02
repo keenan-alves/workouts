@@ -7,7 +7,8 @@ import WorkoutIndex from './WorkoutIndex'
 export class IndividualProfile extends Component {
 
     state = {
-        showWorkouts: false
+        showWorkouts: false,
+        deleteClicked: false 
     }
 
     
@@ -18,7 +19,7 @@ export class IndividualProfile extends Component {
         })
     }
     
-    
+   
     
     
     render() {
@@ -37,6 +38,12 @@ export class IndividualProfile extends Component {
                             </MDBCardText>
                             <MDBBtn color="dark" onClick={() => this.toggleWorkouts()}>
                                 show workouts</MDBBtn>
+
+                                <MDBCol>
+                                    <MDBBtn color="warning" onClick={(event) => this.props.deleteProfile(event)}>
+                                        delete profile</MDBBtn>
+                                </MDBCol>
+
                         </MDBCardBody>
                     </MDBCard>  
                 </MDBRow>

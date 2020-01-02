@@ -25,7 +25,14 @@ export class Profile extends React.Component {
         })
    }
 
-   
+//    deleteProfile = (event) => {
+
+//         fetch(`http://localhost:3000/users/${this.props.id}`, {
+//           method:'DELETE',
+//          headers: { 'Content-type': 'application/json' }})
+//    }
+
+
 
     render() {
        
@@ -48,7 +55,23 @@ export class Profile extends React.Component {
                )}
                {/* {this.state.clicked ? <WorkoutTable users={this.props.users} user={this.state.clickedUser}/> : null} */}
                <MDBRow>
-               {this.state.clicked ? this.state.clickedUser.map(user => <IndividualProfile name={user.name} workouts={user.workouts} key={user.id}/>) : null}
+               {this.state.clicked ? this.state.clickedUser.map(user => <IndividualProfile name={user.name} 
+               clickedUser={this.state.clickedUser}
+               workouts={user.workouts} 
+               key={user.id} 
+               deleteProfile={() => {
+                  let userIndex = this.props.users.indexOf(user)
+                  this.props.users.splice(userIndex, 1)
+                   fetch(`http://localhost:3000/users/${user.id}`, {
+                       method:'DELETE',
+                       headers: { 'Content-type': 'application/json' }})
+                       .then(this.setState({
+                           clickedUser: []
+                       }))
+                       
+               }
+               }
+               />) : null}
                <br/> 
                </MDBRow>
                   
