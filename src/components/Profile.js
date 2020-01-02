@@ -5,6 +5,8 @@ import IndividualProfile from './IndividualProfile'
 
 
 
+
+
 export class Profile extends React.Component {
 
 
@@ -24,13 +26,6 @@ export class Profile extends React.Component {
             clickedUser: [user, ...currentState]
         })
    }
-
-//    deleteProfile = (event) => {
-
-//         fetch(`http://localhost:3000/users/${this.props.id}`, {
-//           method:'DELETE',
-//          headers: { 'Content-type': 'application/json' }})
-//    }
 
 
 
@@ -76,8 +71,8 @@ export class Profile extends React.Component {
                </MDBRow>
                   
                 </MDBRow>
-                {console.log(this.state.clickedUser)}
-                </Container>          
+        
+                </Container>   
         )
     }
 

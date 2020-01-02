@@ -8,73 +8,75 @@ import Button from 'react-bootstrap/Button'
 export class ClientForm extends Component {
 
 
-    state = {
-        name: '',
-        age: '',
-        height: '',
-        weight: '',
-        bodyfat: '',
-        date: '',
-        length: '',
-        exercise1: '',
-        exercise2: '',
-        exercise3: ''  
-    }
+    // state = {
+    //     name: '',
+    //     age: '',
+    //     height: '',
+    //     weight: '',
+    //     bodyfat: '',
+    //     date: '',
+    //     length: '',
+    //     exercise1: '',
+    //     exercise2: '',
+    //     exercise3: ''
+        
+    // }
 
     
-    handleSubmit = (event) => {
-        event.preventDefault()
-        fetch(`http://localhost:3000/users`, {
-          method:'POST',
-         headers: { 
-             'Content-type': 'application/json'
-         },
-         body: JSON.stringify({
+    // handleSubmit = (event) => {
+    //     event.preventDefault()
+        
+    //     fetch(`http://localhost:3000/users`, {
+    //       method:'POST',
+    //      headers: { 
+    //          'Content-type': 'application/json'
+    //      },
+    //      body: JSON.stringify({
 
-                "name": this.state.name,
-                "age": this.state.age,
-                "height": this.state.height,
-                "weight": this.state.weight,
-                "bodyfat": this.state.bodyfat,
-                "workouts": [
-                  {
-                    "date": this.state.date,
-                    "length": this.state.length,
-                    "exercises": [
-                      {
-                        "weight_used": this.state.weight,
-                        "reps": 10,
-                        "sets": 3,
-                        "name": this.state.exercise1,
+    //             "name": this.state.name,
+    //             "age": this.state.age,
+    //             "height": this.state.height,
+    //             "weight": this.state.weight,
+    //             "bodyfat": this.state.bodyfat,
+    //             "workouts": [
+    //               {
+    //                 "date": this.state.date,
+    //                 "length": this.state.length,
+    //                 "exercises": [
+    //                   {
+    //                     "weight_used": this.state.weight,
+    //                     "reps": 10,
+    //                     "sets": 3,
+    //                     "name": this.state.exercise1,
                        
-                      },
-                      {
-                        "id": 2,
-                        "weight_used": this.state.weight,
-                        "reps": 8,
-                        "sets": 5,
-                        "name": this.state.exercise2,
-                      },
-                      {
-                        "id": 3,
-                        "weight_used": 135,
-                        "reps": 12,
-                        "sets": 4,
-                        "name": this.state.exercise3
-                      }
-                    ]
-                  },
-                ]
-            })
-         })
-     }
+    //                   },
+    //                   {
+    //                     "id": 2,
+    //                     "weight_used": this.state.weight,
+    //                     "reps": 8,
+    //                     "sets": 5,
+    //                     "name": this.state.exercise2,
+    //                   },
+    //                   {
+    //                     "id": 3,
+    //                     "weight_used": 135,
+    //                     "reps": 12,
+    //                     "sets": 4,
+    //                     "name": this.state.exercise3
+    //                   }
+    //                 ]
+    //               },
+    //             ]
+    //         })
+    //      })        
+    //  }
 
 
 
     render() {
         return (
             <div>
-                  <h1>Add A Client</h1> 
+                  {/* <h1>Add A Client</h1> 
                   <h5>new clients receive a consultation session</h5>
                   <br/>
                         <Container>
@@ -164,7 +166,7 @@ export class ClientForm extends Component {
                         </Button>
                         </Form>
                         
-                        </Container>
+                        </Container> */}
             </div>
         )
     }

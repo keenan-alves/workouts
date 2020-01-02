@@ -23,20 +23,21 @@ export class ExerciseForm extends Component {
     let workId = this.props.ids.find(id => id === id)
     // all exercises that belong to a specific workout have the same workout id based on backend 
     console.log(this.state)
-    fetch(`http://localhost:3000/workouts/${workId}`, {
+    fetch(`http://localhost:3000/exercises`, {
       method:'POST',
      headers: { 
          'Content-type': 'application/json'
      },
      body: JSON.stringify({
-      exercises: [
-        {
+     // exercises: [
+       // {
           weight_used: this.state.weight_used,
           reps: this.state.reps,
           sets: this.state.sets,
-          name: this.state.exercise
-        },
-      ],
+          name: this.state.exercise,
+          workout_id: workId
+       // },
+    //  ],
       })
     })
   }
