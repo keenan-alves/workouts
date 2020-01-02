@@ -29,16 +29,16 @@ export class ExerciseForm extends Component {
          'Content-type': 'application/json'
      },
      body: JSON.stringify({
-     // exercises: [
-       // {
           weight_used: this.state.weight_used,
           reps: this.state.reps,
           sets: this.state.sets,
           name: this.state.exercise,
           workout_id: workId
-       // },
-    //  ],
       })
+    })
+    .then(r => r.json())
+    .then((r) => {
+      this.props.getWorkout(r)
     })
   }
   

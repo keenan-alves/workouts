@@ -13,8 +13,8 @@ export class Profile extends React.Component {
    state = {
        clickedUser: [],
        workouts: [],
-       clicked: false
-
+       clicked: false,
+       
    }
 
    whichProfile = (user) => {
@@ -33,8 +33,9 @@ export class Profile extends React.Component {
        
         return (
             <Container>
+
                 <MDBRow >
-                {this.props.users.map(user => 
+                    { this.props.users.map(user => 
                     <MDBCard user={user} name={user.name} key={user.id} style={{ width: "22rem" }}  >
                         <MDBCardImage className="img-fluid" src="https://imageog.flaticon.com/icons/png/512/249/249187.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF" waves />
                         <MDBCardBody>

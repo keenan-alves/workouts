@@ -22,6 +22,16 @@ export class WorkoutIndex extends Component {
        })
    }
 
+   getWorkout = (r) => {
+    //console.log(r)
+  let newWorkoutGroup = [...this.state.clickedWorkout]
+    newWorkoutGroup[0].exercises.push(r)
+    
+    this.setState({
+        clickedWorkout: newWorkoutGroup
+    })
+}
+
    
     render() {
          console.log(this.props.workouts.map(workout => workout.exercises.map(exercise => exercise.workout_id)))
@@ -39,7 +49,7 @@ export class WorkoutIndex extends Component {
                     </tr>
                 </tbody>
                 </Table>
-                {this.state.showExercises ? <WorkoutTable workout={this.state.clickedWorkout} /> : null }
+                {this.state.showExercises ? <WorkoutTable getWorkout={this.getWorkout} workout={this.state.clickedWorkout} /> : null }
                 {/* {this.state.showExercises ? this.props.workouts.map(workout => workout.exercises.map(exercise => <WorkoutTable key={exercise.workout_id} exercises={exercise}/>)) : null } */}
             </div>
         )

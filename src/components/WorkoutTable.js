@@ -9,8 +9,6 @@ export class WorkoutTable extends Component {
     }
 
 
-
-
     render() {
         
          //debugger 
@@ -42,7 +40,7 @@ export class WorkoutTable extends Component {
                     }</tr>
                 </tbody>
                 </Table>
-                <ExerciseForm ids={this.props.workout[0].exercises.map(exercise => exercise.workout_id)}/>
+                <ExerciseForm getWorkout={this.props.getWorkout} ids={this.props.workout[0].exercises.map(exercise => exercise.workout_id)}/>
                 
             </div>
         )
