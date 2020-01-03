@@ -84,33 +84,18 @@ export class App extends React.Component {
            users: [...this.state.users, r],
            showUsers: [...this.state.showUsers, r]
          })
-       })
-               
+       })           
    }
 
-      
-   filterSearch = () => {
-     let filteredUsers = this.state.users.filter(user => user.name.startsWith(this.state.searchTerm.toUpperCase()) || user.name.startsWith(this.state.searchTerm.toLowerCase()))
-     if(this.state.searchTerm === ''){
-       this.setState({
-         showUsers: this.state.users
-       })
-     } else {
-     
+   handleChange = (event) => {
+     console.log(event.target.value)
+     let input = event.target.value.toLowerCase()
      this.setState({
-       showUsers: filteredUsers
+       searchTerm: event.target.value,
+       showUsers: this.state.users.filter(user => user.name.toLowerCase().includes(input))
      })
-    }
-    
-    // handleChange, set the event.target.value to the state, then call filterSearch w/ this.state.watever you named it
-    this.handleChange = (event) => {
-      this.setState({
-        searchTerm: event.target.value
-      })
-    }
-    
-     
    }
+   
 
     render() {
 
@@ -123,10 +108,8 @@ export class App extends React.Component {
    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
    crossorigin="anonymous"
    />
-                     <Form.Group as={Col} controlId="matchLetter" >
-                                      <Form.Label></Form.Label>
-                                      <Form.Control type="text" value={this.state.searchTerm} onChange={(event) => this.filterSearch(event)}/>
-                                      </Form.Group>
+                                      <input value={this.state.searchTerm} type="name" onChange={this.handleChange}/>
+                                      
    <Profile users={this.state.showUsers}  />
    
 
