@@ -14,7 +14,9 @@ import Button from 'react-bootstrap/Button'
 export class App extends React.Component {
 
   state = {
-    users: []
+    users: [],
+    showUsers: [],
+    searchTerm: ''
   }
 
   
@@ -23,7 +25,8 @@ export class App extends React.Component {
     .then(r => r.json())
     .then((allUsers) => {
         this.setState({
-          users: allUsers
+          users: allUsers,
+          showUsers: allUsers
         })
       })
     }
@@ -78,15 +81,39 @@ export class App extends React.Component {
        .then(r => r.json())
        .then((r) => {
          this.setState({
-           users: [...this.state.users, r]
+           users: [...this.state.users, r],
+           showUsers: [...this.state.showUsers, r]
          })
        })
                
    }
 
       
+   filterSearch = () => {
+     let filteredUsers = this.state.users.filter(user => user.name.startsWith(this.state.searchTerm.toUpperCase()) || user.name.startsWith(this.state.searchTerm.toLowerCase()))
+     if(this.state.searchTerm === ''){
+       this.setState({
+         showUsers: this.state.users
+       })
+     } else {
+     
+     this.setState({
+       showUsers: filteredUsers
+     })
+    }
+    
+    // handleChange, set the event.target.value to the state, then call filterSearch w/ this.state.watever you named it
+    this.handleChange = (event) => {
+      this.setState({
+        searchTerm: event.target.value
+      })
+    }
+    
+     
+   }
 
     render() {
+
       
       return (//<main>
         <div className="App">
@@ -96,7 +123,11 @@ export class App extends React.Component {
    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
    crossorigin="anonymous"
    />
-   <Profile users={this.state.users} />
+                     <Form.Group as={Col} controlId="matchLetter" >
+                                      <Form.Label></Form.Label>
+                                      <Form.Control type="text" value={this.state.searchTerm} onChange={(event) => this.filterSearch(event)}/>
+                                      </Form.Group>
+   <Profile users={this.state.showUsers}  />
    
 
    <h1>Add A Client</h1> 
